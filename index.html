@@ -1,292 +1,273 @@
 <!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Needa Skill Development Center</title>
-
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172554}
-header{background:#102b50;color:white;text-align:center;padding:30px 15px}
-header h1{font-size:25px;margin:5px}
-nav{background:#087e75;padding:14px;text-align:center;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
-nav a{color:white;text-decoration:none;font-weight:bold;padding:8px}
-nav a:hover{background:#075b55;border-radius:6px}
-.hero{text-align:center;padding:60px 15px;background:linear-gradient(135deg,#e2f4f1,#dbeafe)}
-.hero h2{font-size:30px;color:#075b55}
-button,.btn{background:#087e75;color:white;border:0;padding:12px 22px;border-radius:7px;cursor:pointer;font-size:15px;text-decoration:none;display:inline-block}
-button:hover,.btn:hover{background:#075b55}
-.container{padding:30px 18px;max-width:1100px;margin:auto}
-.section-title{text-align:center;color:#075b55}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}
-.card{background:white;padding:25px;border-radius:12px;text-align:center;box-shadow:0 3px 12px #ddd}
-.card h3{color:#075b55}
-#admin-login,#dashboard{display:none}
-.login-box{max-width:420px;margin:35px auto;background:white;padding:28px;border-radius:14px;box-shadow:0 4px 18px #d5dce8}
-input{width:100%;padding:13px;margin:9px 0;border:1px solid #cbd5e1;border-radius:7px;font-size:16px}
-.login-box h2{text-align:center;color:#075b55}
-#login-message{color:#b91c1c;text-align:center;overflow-wrap:anywhere}
-.dashboard-head{background:#102b50;color:white;padding:20px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-top:20px}
-.stat{background:white;padding:22px;border-radius:12px;text-align:center;box-shadow:0 3px 12px #ddd}
-.stat h2{color:#087e75;font-size:30px}
-.admin-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-top:20px}
-.admin-menu a{background:white;padding:22px;text-align:center;text-decoration:none;color:#075b55;border-radius:10px;box-shadow:0 3px 12px #ddd;font-weight:bold}
-footer{background:#102b50;color:white;text-align:center;padding:22px;margin-top:30px}
-.hidden{display:none!important}
-@media(max-width:600px){
- header h1{font-size:20px}
- .hero h2{font-size:24px}
- .container{padding:20px 12px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Needa Skill Development & Vocational Training Center</title>
+  <meta name="description" content="The Needa Skill Development & Vocational Training Center, Dera Murad Jamali">
+  <style>
+    :root{--navy:#102a43;--blue:#1769aa;--teal:#0f766e;--gold:#f4b942;--bg:#f3f6fa;--ink:#243447;--muted:#65758b;--white:#fff;--line:#e3eaf1;--red:#b42318}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+    a{color:inherit;text-decoration:none}
+    .topbar{background:var(--navy);color:#fff;padding:13px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .brand{font-size:19px;font-weight:700}
+    .topbar small{color:#d9e7f5}
+    nav{display:flex;gap:18px;flex-wrap:wrap}
+    nav a{font-size:14px;color:#fff}
+    .hero{background:linear-gradient(120deg,#102a43,#1769aa);color:#fff;padding:65px 6%;text-align:center}
+    .hero h1{font-size:clamp(26px,4vw,42px);margin:0 0 12px}
+    .hero p{max-width:760px;margin:0 auto 22px;color:#e7f1fb}
+    .btn{display:inline-block;border:0;border-radius:9px;padding:11px 20px;font-weight:700;cursor:pointer;font-size:15px}
+    .btn-gold{background:var(--gold);color:#172b3d}
+    .btn-blue{background:var(--blue);color:#fff}
+    .btn-light{background:#eaf2f9;color:var(--navy)}
+    .container{width:min(1100px,92%);margin:35px auto}
+    .section-title{text-align:center;color:var(--navy);margin:0 0 22px;font-size:27px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 5px 18px #102a430d}
+    .card h3{margin:0 0 8px;color:var(--blue)}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .info{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .info .card{min-height:130px}
+    footer{background:var(--navy);color:#fff;text-align:center;padding:22px 10px;margin-top:45px}
+    footer small{color:#d9e7f5}
+    .admin-wrap{max-width:520px;margin:38px auto;padding:0 14px}
+    .admin-box{background:#fff;border:1px solid var(--line);border-radius:15px;padding:25px;box-shadow:0 8px 25px #102a4310}
+    .admin-box h2{margin:0 0 6px;color:var(--navy)}
+    .admin-box label{display:block;font-weight:700;margin:13px 0 5px}
+    .admin-box input{width:100%;padding:12px;border:1px solid #ccd7e2;border-radius:8px;font-size:16px;direction:ltr;text-align:left}
+    .admin-box button{width:100%;margin-top:18px}
+    .notice{font-size:13px;color:var(--muted);margin-top:12px}
+    .status{margin-top:13px;font-size:14px;min-height:24px;color:var(--red)}
+    .hidden{display:none!important}
+    .dashboard{max-width:1100px;margin:35px auto;padding:0 4%}
+    .dash-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+    .dash-head h2{margin:0;color:var(--navy)}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+    .stat{background:#fff;border:1px solid var(--line);border-radius:13px;padding:19px}
+    .stat span{display:block;color:var(--muted);font-size:14px}
+    .stat strong{display:block;font-size:30px;color:var(--blue);margin-top:4px}
+    .dashboard-note{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:18px;color:var(--muted)}
+    @media(max-width:650px){.info{grid-template-columns:1fr}.topbar{justify-content:center;text-align:center}nav{justify-content:center}.hero{padding:48px 5%}}
+  </style>
 </head>
-
 <body>
+  <header class="topbar">
+    <div>
+      <div class="brand">The Needa Skill Development</div>
+      <small>Vocational Training Center — Dera Murad Jamali</small>
+    </div>
+    <nav aria-label="Main navigation">
+      <a href="#home">ہوم</a>
+      <a href="#courses">کورسز</a>
+      <a href="#admission">داخلہ</a>
+      <a href="#contact">رابطہ</a>
+      <a href="#admin">ایڈمن لاگ اِن</a>
+    </nav>
+  </header>
 
-<header>
-<h1>The Needa Skill Development & Vocational Training Center</h1>
-<p>Dera Murad Jamali, Balochistan</p>
-</header>
+  <main id="publicSite">
+    <section class="hero" id="home">
+      <h1>The Needa Skill Development & Vocational Training Center</h1>
+      <p>ڈیرا مراد جمالی میں جدید کمپیوٹر اور ڈیجیٹل اسکلز سیکھیں، اپنی صلاحیتوں کو بہتر بنائیں اور اپنے مستقبل کو کامیاب بنائیں۔</p>
+      <a class="btn btn-gold" href="#admission">داخلے کے لیے رابطہ کریں</a>
+    </section>
 
-<nav>
-<a href="#home" onclick="showHome()">Home</a>
-<a href="#courses" onclick="showHome()">Courses</a>
-<a href="#admission" onclick="showHome()">Admission</a>
-<a href="#contact" onclick="showHome()">Contact</a>
-<a href="#admin-login" onclick="showLogin()">Admin Login</a>
-</nav>
+    <section class="container" id="courses">
+      <h2 class="section-title">ہمارے کورسز</h2>
+      <div class="cards">
+        <article class="card"><h3>DIT / CIT</h3><p>کمپیوٹر کی بنیادی اور پیشہ ورانہ تعلیم۔</p></article>
+        <article class="card"><h3>MS Office</h3><p>MS Word، Excel، PowerPoint اور آفس ورک۔</p></article>
+        <article class="card"><h3>Graphic Designing</h3><p>Canva، Photoshop اور ڈیزائننگ کی تربیت۔</p></article>
+        <article class="card"><h3>Video Editing</h3><p>CapCut اور جدید ویڈیو ایڈیٹنگ کی مہارت۔</p></article>
+        <article class="card"><h3>Digital Marketing</h3><p>Social Media Marketing اور آن لائن کام کی بنیادی تربیت۔</p></article>
+        <article class="card"><h3>Computer Basics</h3><p>Typing، انٹرنیٹ اور کمپیوٹر کی بنیادی مہارتیں۔</p></article>
+      </div>
+    </section>
 
-<main id="home-page">
+    <section class="container info" id="admission">
+      <div class="card"><h3>داخلے جاری ہیں</h3><p>داخلے اور کورسز کی تفصیلات کے لیے ادارے سے رابطہ کریں۔</p></div>
+      <div class="card" id="contact"><h3>رابطہ</h3><p>The Needa Skill Development & Vocational Training Center<br> Dera Murad Jamali, Balochistan</p></div>
+    </section>
+  </main>
 
-<section class="hero" id="home">
-<h2>خوش آمدید!</h2>
-<h3>اپنے مستقبل کو ڈیجیٹل مہارتوں سے روشن بنائیں</h3>
-<p>Learn Skills | Build Your Future</p>
-<button onclick="document.getElementById('admission').scrollIntoView({behavior:'smooth'})">
-داخلہ حاصل کریں
-</button>
-</section>
+  <section class="admin-wrap" id="admin">
+    <div class="admin-box" id="loginBox">
+      <h2>ایڈمن لاگ اِن</h2>
+      <p class="notice">اپنے ادارے کے ایڈمن اکاؤنٹ کی ای میل اور پاس ورڈ درج کریں۔</p>
+      <form id="loginForm">
+        <label for="email">ای میل</label>
+        <input id="email" type="email" autocomplete="username" placeholder="admin@example.com" required>
+        <label for="password">پاس ورڈ</label>
+        <input id="password" type="password" autocomplete="current-password" placeholder="اپنا پاس ورڈ درج کریں" required>
+        <button class="btn btn-blue" id="loginButton" type="submit">لاگ اِن کریں</button>
+      </form>
+      <div class="status" id="loginStatus" role="status" aria-live="polite"></div>
+      <p class="notice">اگر لاگ اِن نہ ہو تو ایڈمن صارف اور Supabase پروفائل کی سیٹنگ چیک کرنا ہوگی۔</p>
+    </div>
+  </section>
 
-<section class="container" id="courses">
-<h2 class="section-title">ہمارے کورسز</h2>
-<div class="cards">
-<div class="card">💻<h3>DIT / CIT</h3><p>Computer Skills</p></div>
-<div class="card">🎨<h3>Graphic Designing</h3><p>Creative Design</p></div>
-<div class="card">🎬<h3>Video Editing</h3><p>Professional Editing</p></div>
-<div class="card">📊<h3>MS Office & Excel</h3><p>Office Management</p></div>
-<div class="card">📱<h3>Social Media Marketing</h3><p>Digital Marketing</p></div>
-<div class="card">🖥️<h3>Computer Basics</h3><p>Basic Computer Course</p></div>
-</div>
-</section>
+  <section class="dashboard hidden" id="dashboard">
+    <div class="dash-head">
+      <div><h2>ایڈمن ڈیش بورڈ</h2><div id="welcomeText" class="notice"></div></div>
+      <button class="btn btn-light" id="logoutButton" type="button">لاگ آؤٹ</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><span>کل طلبہ</span><strong id="studentsCount">—</strong></div>
+      <div class="stat"><span>کل اساتذہ</span><strong id="teachersCount">—</strong></div>
+      <div class="stat"><span>فیس ریکارڈز</span><strong id="feesCount">—</strong></div>
+      <div class="stat"><span>حاضری ریکارڈز</span><strong id="attendanceCount">—</strong></div>
+    </div>
+    <div class="dashboard-note" id="dashboardMessage">
+      ڈیش بورڈ کھل گیا ہے۔ طلبہ کے داخلے، فیس اور حاضری کے مکمل فارم اگلے مرحلے میں شامل کیے جائیں گے۔
+    </div>
+    <div class="status" id="dashboardStatus" role="status" aria-live="polite"></div>
+  </section>
 
-<section class="container" id="admission">
-<h2 class="section-title">آن لائن داخلہ</h2>
-<div class="card">
-<p>داخلے اور کورسز کی معلومات کے لیے اکیڈمی سے رابطہ کریں۔</p>
-</div>
-</section>
+  <footer>
+    <div><strong>The Needa Skill Development & Vocational Training Center</strong></div>
+    <small>Dera Murad Jamali, Balochistan</small>
+  </footer>
 
-<section class="container" id="contact">
-<h2 class="section-title">رابطہ کریں</h2>
-<div class="card">
-<p>The Needs Skill Development & Vocational Training Center</p>
-<p>Dera Murad Jamali, Balochistan</p>
-</div>
-</section>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Supabase Project URL اور Publishable Key
+    const SUPABASE_URL = "https://handeavczgphxgwynunv.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_6GBd0_dyNviE9Y61p9jSbQ_B0WscRJo";
 
-</main>
+    const loginForm = document.getElementById("loginForm");
+    const loginButton = document.getElementById("loginButton");
+    const loginStatus = document.getElementById("loginStatus");
+    const loginBox = document.getElementById("loginBox");
+    const dashboard = document.getElementById("dashboard");
+    const publicSite = document.getElementById("publicSite");
+    const adminWrap = document.querySelector(".admin-wrap");
 
-<section id="admin-login" class="container">
-<div class="login-box">
-<h2>🔐 Admin Login</h2>
-<p style="text-align:center">اپنے ایڈمن اکاؤنٹ سے لاگ ان کریں</p>
+    let supabaseClient = null;
 
-<form onsubmit="adminLogin(event)">
-<input id="admin-email" type="email" placeholder="Admin Gmail" required>
-<input id="admin-password" type="password" placeholder="Password" required>
-<button type="submit" style="width:100%">Login</button>
-</form>
-
-<p id="login-message"></p>
-</div>
-</section>
-
-<section id="dashboard" class="container">
-<div class="dashboard-head">
-<div>
-<h2>Admin Dashboard</h2>
-<p id="admin-name">Welcome Admin</p>
-</div>
-<button onclick="adminLogout()" style="background:#dc2626">Logout</button>
-</div>
-
-<div class="stats">
-<div class="stat">
-<h2 id="student-count">—</h2>
-<p>کل طلبہ</p>
-</div>
-<div class="stat">
-<h2 id="teacher-count">—</h2>
-<p>کل اساتذہ</p>
-</div>
-<div class="stat">
-<h2 id="fee-count">—</h2>
-<p>فیس ریکارڈ</p>
-</div>
-<div class="stat">
-<h2 id="attendance-count">—</h2>
-<p>حاضری ریکارڈ</p>
-</div>
-</div>
-
-<h2 class="section-title" style="margin-top:35px">Admin Management</h2>
-
-<div class="admin-menu">
-<a href="#students">👨‍🎓<br>Students</a>
-<a href="#teachers">👨‍🏫<br>Teachers</a>
-<a href="#fees">💰<br>Fees Management</a>
-<a href="#attendance">📅<br>Attendance</a>
-</div>
-
-<p id="dashboard-message" style="text-align:center;margin-top:20px"></p>
-</section>
-
-<footer>
-© 2026 The Needs Skill Development & Vocational Training Center
-</footer>
-<script src="https://handeavczgphxgwynunv.supabase.co"></script>
- const SUPABASE_URL = "https://handeavczgphxgwynunv.supabase.co";
- <script src="https://handeavczgphxgwynunv.supabase.co"></script>
- const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY);
-const SUPABASE_KEY = " sb_publishable_6GBd0_dyNviE9Y61p9jSbQ_B0WscRJo";
-function showHome(){
-  document.getElementById("home-page").style.display="block";
-  document.getElementById("admin-login").style.display="none";
-  document.getElementById("dashboard").style.display="none";}
-function showLogin(){
- document.getElementById("home-page").style.display="none";
-  document.getElementById("admin-login").style.display="block";
-  document.getElementById("dashboard").style.display="none";
-}
-async function adminLogin(event){
-  event.preventDefault();
-
-  const email=document.getElementById("admin-email").value.trim();
-  const password=document.getElementById("admin-password").value;
-  const message=document.getElementById("login-message");
-
-  message.style.color="#b91c1c";
-  message.textContent="Login چیک ہو رہا ہے...";
-
-  const {data,error}=await supabaseClient.auth.signInWithPassword({
-    email:email,
-    password:password
-  });
-
-  if(error){
-    message.textContent="Login Error: "+error.message;
-    return;
-  }
-
-  // تصدیق کریں کہ یہ واقعی Admin ہے
-  const {data:profile,error:profileError}=await supabaseClient
-    .from("profiles")
-    .select("role, full_name")
-    .eq("id",data.user.id)
-    .single();
-
-  if(profileError || !profile || String(profile.role).toLowerCase()!=="admin"){
-    await supabaseClient.auth.signOut();
-    message.textContent="Admin profile نہیں ملا۔ profiles ٹیبل کی ID اور role چیک کریں۔";
-    return;
-  }
-
-  document.getElementById("admin-name").textContent=
-    "Welcome, "+(profile.full_name || "Admin");
-
-  document.getElementById("home-page").style.display="none";
-  document.getElementById("admin-login").style.display="none";
-  document.getElementById("dashboard").style.display="block";
-
-  loadDashboard();
-}
-
-async function loadDashboard(){
-  const message=document.getElementById("dashboard-message");
-  message.textContent="Dashboard کا ڈیٹا لوڈ ہو رہا ہے...";
-
-  const tables=[
-    ["students","student-count"],
-    ["teachers","teacher-count"],
-    ["fees","fee-count"],
-    ["attendance","attendance-count"]
-  ];
-
-  let errors=[];
-
-  for(const [table,elementId] of tables){
-    const {count,error}=await supabaseClient
-      .from(table)
-      .select("*",{count:"exact",head:true});
-
-    if(error){
-      document.getElementById(elementId).textContent="—";
-      errors.push(table);
-    }else{
-      document.getElementById(elementId).textContent=count ?? 0;
+    function showMessage(element, message, isError = true) {
+      element.textContent = message;
+      element.style.color = isError ? "#b42318" : "#087443";
     }
-  }
 
-  if(errors.length){
-    message.textContent="کچھ ٹیبلز کا ڈیٹا نہیں کھل سکا: "+errors.join(", ")+
-      "۔ Database Policies چیک کرنا ہوں گی۔";
-  }else{
-    message.textContent="Dashboard کامیابی سے لوڈ ہوگیا۔";
-  }
-}
-
-async function adminLogout(){
-  const {error}=await supabaseClient.auth.signOut();
-
-  if(error){
-    alert("Logout Error: "+error.message);
-    return;
-  }
-
-  document.getElementById("admin-email").value="";
-  document.getElementById("admin-password").value="";
-  document.getElementById("login-message").textContent="";
-  showLogin();
-}
-
-// اگر پہلے سے Admin لاگ ان ہو تو سیشن چیک کریں
-async function checkSession(){
-  const {data}=await supabaseClient.auth.getSession();
-
-  if(data.session){
-    const {data:profile}=await supabaseClient
-      .from("profiles")
-      .select("role, full_name")
-      .eq("id",data.session.user.id)
-      .single();
-
-    if(profile && String(profile.role).toLowerCase()==="admin"){
-      document.getElementById("admin-name").textContent=
-        "Welcome, "+(profile.full_name || "Admin");
-      document.getElementById("home-page").style.display="none";
-      document.getElementById("admin-login").style.display="none";
-      document.getElementById("dashboard").style.display="block";
-      loadDashboard();
+    function setLoggedInView(user, fullName) {
+      loginBox.classList.add("hidden");
+      dashboard.classList.remove("hidden");
+      publicSite.classList.add("hidden");
+      adminWrap.classList.add("hidden");
+      document.getElementById("welcomeText").textContent =
+        "خوش آمدید، " + (fullName || user.email || "Admin");
     }
-  }
-}
 
-checkSession();
-</script>
+    function setLoggedOutView() {
+      dashboard.classList.add("hidden");
+      loginBox.classList.remove("hidden");
+      publicSite.classList.remove("hidden");
+      adminWrap.classList.remove("hidden");
+    }
 
+    async function getAdminProfile(user) {
+      const { data, error } = await supabaseClient
+        .from("profiles")
+        .select("id, full_name, role")
+        .eq("id", user.id)
+        .maybeSingle();
+
+      if (error) throw new Error("پروفائل چیک نہیں ہو سکا: " + error.message);
+      if (!data) throw new Error("اس صارف کا profiles ٹیبل میں ریکارڈ نہیں ملا۔ profiles.id میں یہی Auth User ID اور role میں admin ہونا چاہیے۔");
+      if (String(data.role || "").toLowerCase() !== "admin") {
+        throw new Error("یہ اکاؤنٹ ایڈمن نہیں ہے۔ profiles ٹیبل میں اس صارف کا role = admin کریں۔");
+      }
+      return data;
+    }
+
+    async function loadCount(table, elementId) {
+      const { count, error } = await supabaseClient
+        .from(table)
+        .select("*", { count: "exact", head: true });
+      if (error) {
+        document.getElementById(elementId).textContent = "!";
+        throw new Error(table + " ٹیبل: " + error.message);
+      }
+      document.getElementById(elementId).textContent = count ?? 0;
+    }
+
+    async function loadDashboard() {
+      const status = document.getElementById("dashboardStatus");
+      showMessage(status, "ریکارڈز لوڈ ہو رہے ہیں...", false);
+      try {
+        await Promise.all([
+          loadCount("students", "studentsCount"),
+          loadCount("teachers", "teachersCount"),
+          loadCount("fees", "feesCount"),
+          loadCount("attendance", "attendanceCount")
+        ]);
+        showMessage(status, "ڈیش بورڈ کامیابی سے لوڈ ہو گیا۔", false);
+      } catch (error) {
+        showMessage(status, "ڈیش بورڈ لاگ اِن ہو گیا، لیکن کچھ ریکارڈز نہیں پڑھے جا سکے۔ Supabase میں RLS policies بنانا ضروری ہے۔ تفصیل: " + error.message);
+      }
+    }
+
+    async function verifySession() {
+      if (!supabaseClient) return;
+      const { data, error } = await supabaseClient.auth.getSession();
+      if (error || !data.session) return;
+      try {
+        const profile = await getAdminProfile(data.session.user);
+        setLoggedInView(data.session.user, profile.full_name);
+        await loadDashboard();
+      } catch (error) {
+        await supabaseClient.auth.signOut();
+        setLoggedOutView();
+        showMessage(loginStatus, error.message);
+      }
+    }
+
+    async function startApp() {
+      if (!window.supabase || !window.supabase.createClient) {
+        showMessage(loginStatus, "Supabase لائبریری لوڈ نہیں ہوئی۔ انٹرنیٹ چیک کریں اور صفحہ دوبارہ کھولیں۔");
+        loginButton.disabled = true;
+        return;
+      }
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+      await verifySession();
+    }
+
+    loginForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      if (!supabaseClient) {
+        showMessage(loginStatus, "Supabase ابھی تیار نہیں۔ صفحہ دوبارہ لوڈ کریں۔");
+        return;
+      }
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      loginButton.disabled = true;
+      loginButton.textContent = "لاگ اِن ہو رہا ہے...";
+      showMessage(loginStatus, "اکاؤنٹ چیک ہو رہا ہے...", false);
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) throw new Error("لاگ اِن ناکام: " + error.message);
+        const profile = await getAdminProfile(data.user);
+        setLoggedInView(data.user, profile.full_name);
+        await loadDashboard();
+      } catch (error) {
+        showMessage(loginStatus, error.message || "کوئی مسئلہ پیش آیا۔ دوبارہ کوشش کریں۔");
+      } finally {
+        loginButton.disabled = false;
+        loginButton.textContent = "لاگ اِن کریں";
+      }
+    });
+
+    document.getElementById("logoutButton").addEventListener("click", async function() {
+      if (supabaseClient) await supabaseClient.auth.signOut();
+      setLoggedOutView();
+      document.getElementById("password").value = "";
+      showMessage(loginStatus, "آپ لاگ آؤٹ ہو گئے ہیں۔", false);
+      window.location.hash = "admin";
+    });
+
+    startApp().catch(error => showMessage(loginStatus, "سسٹم شروع نہیں ہو سکا: " + error.message));
+  </script>
 </body>
 </html>
