@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+0<!DOCTYPE html>
 <html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -68,9 +68,24 @@ const SUPABASE_KEY = " sb_publishable_6GBd0_dyNviE9Y61p9jSbQ_B0WscRJo
 ";
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_KEY
-);
+    SUPABASE_KEY);
 console.log("Supabase client ready");
+<section id="admin-login" style="padding:30px;text-align:center;background:#f1f5f9;">
+  <h2>Admin Login</h2>
+  <input id="admin-email" type="email" placeholder="Admin Email"><br><br>
+  <input id="admin-password" type="password" placeholder="Password"><br><br>
+  <button onclick="adminLogin()">Login</button>
+  <p id="login-message"></p>
+</section>
+<script>
+async function adminLogin() {
+  const email = document.getElementById("admin-email").value;
+  const password = document.getElementById("admin-password").value;
+  const { data, error } = await supabaseClient.auth.signInWithPassword({email: email, password: password});
+  const message = document.getElementById("login-message");
+  if (error) { message.innerText = "Login failed: " + error.message; return;}
+  message.innerText = "Login successful!";}
+</script>
 </script>
 </body>
 </html>
