@@ -91,7 +91,7 @@ footer{background:#102b50;color:white;text-align:center;padding:22px;margin-top:
 <section class="container" id="contact">
 <h2 class="section-title">رابطہ کریں</h2>
 <div class="card">
-<p>The Needa Skill Development & Vocational Training Center</p>
+<p>The Needs Skill Development & Vocational Training Center</p>
 <p>Dera Murad Jamali, Balochistan</p>
 </div>
 </section>
@@ -154,18 +154,21 @@ footer{background:#102b50;color:white;text-align:center;padding:22px;margin-top:
 </section>
 
 <footer>
-© 2026 The Needa Skill Development & Vocational Training Center
+© 2026 The Needs Skill Development & Vocational Training Center
 </footer>
-const SUPABASE_URL = "https://handeavczgphxgwynunv.supabase.co/rest/v1/";
+<script src="https://handeavczgphxgwynunv.supabase.co"></script>
+ const SUPABASE_URL = "https://handeavczgphxgwynunv.supabase.co";
+ <script src="https://handeavczgphxgwynunv.supabase.co"></script>
+ const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY);
 const SUPABASE_KEY = " sb_publishable_6GBd0_dyNviE9Y61p9jSbQ_B0WscRJo";
 function showHome(){
   document.getElementById("home-page").style.display="block";
   document.getElementById("admin-login").style.display="none";
-  document.getElementById("dashboard").style.display="none";
-}
-
+  document.getElementById("dashboard").style.display="none";}
 function showLogin(){
-  document.getElementById("home-page").style.display="none";
+ document.getElementById("home-page").style.display="none";
   document.getElementById("admin-login").style.display="block";
   document.getElementById("dashboard").style.display="none";
 }
