@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Needa Skill Development & Vocational Training Center</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--navy:#12304a;--blue:#176b87;--teal:#159895;--bg:#f3f6fa;--ink:#172b3a;--muted:#64748b;--white:#fff;--line:#e3eaf0;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Nastaliq Urdu",sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(120deg,var(--navy),var(--blue));color:#fff;padding:24px 18px}
+.wrap{max-width:1150px;margin:auto}header h1{margin:0 0 8px;font-size:clamp(21px,4vw,30px)}header p{margin:0;opacity:.9}
+nav{background:#fff;border-bottom:1px solid var(--line);padding:12px 18px;display:flex;gap:10px;flex-wrap:wrap}
+nav a{color:var(--navy);text-decoration:none;font-weight:700;padding:8px 10px;border-radius:8px}nav a:hover{background:#eaf3f7}
+main{max-width:1150px;margin:24px auto;padding:0 16px}
+.panel,.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 5px 18px #15334a0a}
+.hero{padding:28px;background:#fff;border-radius:16px;border:1px solid var(--line)}
+.hero h2{margin-top:0;color:var(--navy)}.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:20px}
+.course{background:#f8fbfd;border:1px solid var(--line);padding:17px;border-radius:12px}.course h3{margin:0 0 7px;color:var(--blue)}
+.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:13px}
+button,.btn{border:0;border-radius:9px;padding:11px 16px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}
+button:hover{filter:brightness(.95)}button.secondary{background:#e8f0f5;color:var(--navy)}button.danger{background:#fff0ef;color:var(--red)}
+input,select,textarea{width:100%;padding:11px;border:1px solid #ccd7e0;border-radius:8px;font-size:15px;background:#fff;color:var(--ink)}
+label{display:block;font-weight:700;font-size:14px;margin:0 0 6px}.field{margin-bottom:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.tabs button{background:#e8f0f5;color:var(--navy)}.tabs button.active{background:var(--blue);color:#fff}
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+.stat{background:#f4f9fb;border:1px solid var(--line);padding:15px;border-radius:12px}.stat strong{display:block;font-size:25px;color:var(--blue);margin-top:5px}
+.tablewrap{overflow-x:auto;margin-top:15px}table{border-collapse:collapse;width:100%;min-width:600px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}th{background:#f3f7fa;color:var(--navy)}
+.notice{padding:12px;border-radius:9px;margin:12px 0;background:#edf7f8;color:#14545b}.error{background:#fff0ef;color:var(--red)}
+footer{text-align:center;color:var(--muted);padding:28px 12px}
+@media(max-width:600px){header{padding:20px 15px}main{margin:16px auto}.panel{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>The Needa Skill Development & Vocational Training Center</h1>
+<p>Dera Murad Jamali — Skills for a Better Future</p>
+</div></header>
+<nav>
+<a href="#" onclick="showPublic();return false">Home</a>
+<a href="#courses" onclick="showPublic();return false">Courses</a>
+<a href="#contact" onclick="showPublic();return false">Contact</a>
+<a href="#" onclick="showLogin();return false">Admin Login</a>
+</nav>
+<main>
+<section id="publicPage">
+<div class="hero">
+<h2>Welcome to The Needa Skill Development & Vocational Training Center</h2>
+<p>ہم طلبہ کو کمپیوٹر اور ڈیجیٹل مہارتوں کی عملی تربیت فراہم کرتے ہیں۔</p>
+<div class="courses" id="courses">
+<div class="course"><h3>DIT / CIT</h3><p>Basic to advanced computer skills.</p></div>
+<div class="course"><h3>Graphic Designing</h3><p>Creative design and visual communication.</p></div>
+<div class="course"><h3>Video Editing</h3><p>Professional video editing skills.</p></div>
+<div class="course"><h3>MS Office & Excel</h3><p>Word, Excel and office productivity.</p></div>
+<div class="course"><h3>Social Media Marketing</h3><p>Digital marketing and social media skills.</p></div>
+</div>
+</div>
+<div class="panel" id="contact" style="margin-top:18px"><h2>Contact</h2><p>Dera Murad Jamali, Balochistan, Pakistan</p><p class="muted">Admissions and course information کے لیے ادارے سے رابطہ کریں۔</p></div>
+</section>
+
+<section id="loginPage" class="panel hidden" style="max-width:470px;margin:20px auto">
+<h2>Admin Login</h2><p class="muted">صرف مجاز Admin اپنے اکاؤنٹ سے لاگ اِن کریں۔</p>
+<div id="loginMessage" class="notice hidden"></div>
+<form id="loginForm">
+<div class="field"><label>Email</label><input id="email" type="email" required autocomplete="username" placeholder="Admin email"></div>
+<div class="field"><label>Password</label><input id="password" type="password" required autocomplete="current-password" placeholder="Password"></div>
+<button type="submit" id="loginBtn">Login</button>
+</form>
+</section>
+
+<section id="dashboard" class="hidden">
+<div class="panel">
+<div class="actions" style="justify-content:space-between">
+<div><h2 style="margin:0">Admin Dashboard</h2><p id="welcome" class="muted" style="margin:6px 0 0"></p></div>
+<button class="secondary" onclick="logout()">Logout</button>
+</div>
+<div class="statgrid">
+<div class="stat">Total Students<strong id="studentCount">0</strong></div>
+<div class="stat">Total Teachers<strong id="teacherCount">0</strong></div>
+<div class="stat">Fee Records<strong id="feeCount">0</strong></div>
+<div class="stat">Attendance Records<strong id="attendanceCount">0</strong></div>
+</div>
+<div class="tabs">
+<button class="active" data-tab="students" type="button">Students</button>
+<button data-tab="teachers" type="button">Teachers</button>
+<button data-tab="fees" type="button">Fee Management</button>
+<button data-tab="attendance" type="button">Attendance</button>
+</div>
+<div id="globalMessage" class="notice hidden"></div>
+
+<div id="studentsTab" class="tabcontent">
+<h3>Student Admission</h3>
+<form id="studentForm">
+<div class="grid">
+<div class="field"><label>Student Name *</label><input id="studentName" required></div>
+<div class="field"><label>Father Name</label><input id="fatherName"></div>
+<div class="field"><label>Mobile Number</label><input id="studentMobile" inputmode="tel"></div>
+<div class="field"><label>Course</label><input id="studentCourse" placeholder="DIT / CIT / Excel etc."></div>
+</div><button type="submit">Save Student</button>
+</form>
+<h3 style="margin-top:25px">Student Records</h3>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Student</th><th>Father</th><th>Mobile</th><th>Course</th></tr></thead><tbody id="studentsRows"></tbody></table></div>
+</div>
+
+<div id="teachersTab" class="tabcontent hidden">
+<h3>Add Teacher</h3>
+<form id="teacherForm"><div class="grid">
+<div class="field"><label>Teacher Name *</label><input id="teacherName" required></div>
+<div class="field"><label>Father Name</label><input id="teacherFather"></div>
+<div class="field"><label>Mobile Number</label><input id="teacherMobile" inputmode="tel"></div>
+<div class="field"><label>Subject / Course</label><input id="teacherSubject"></div>
+<div class="field"><label>Monthly Salary</label><input id="teacherSalary" type="number" min="0" step="0.01"></div>
+</div><button type="submit">Save Teacher</button></form>
+<h3 style="margin-top:25px">Teacher Records</h3>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Name</th><th>Father</th><th>Mobile</th><th>Subject</th><th>Salary</th></tr></thead><tbody id="teachersRows"></tbody></table></div>
+</div>
+
+<div id="feesTab" class="tabcontent hidden">
+<h3>Record Student Fee</h3>
+<form id="feeForm"><div class="grid">
+<div class="field"><label>Student *</label><select id="feeStudent" required><option value="">Select Student</option></select></div>
+<div class="field"><label>Fee Month *</label><input id="feeMonth" required placeholder="November 2026"></div>
+<div class="field"><label>Total Fee (Rs.)</label><input id="totalFee" type="number" min="0" step="0.01" required></div>
+<div class="field"><label>Paid Amount (Rs.)</label><input id="paidAmount" type="number" min="0" step="0.01" value="0" required></div>
+<div class="field"><label>Payment Date</label><input id="paymentDate" type="date"></div>
+<div class="field"><label>Notes</label><input id="feeNotes" placeholder="Optional"></div>
+</div><button type="submit">Save Fee Record</button></form>
+<h3 style="margin-top:25px">Fee Records</h3>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Student</th><th>Month</th><th>Total</th><th>Paid</th><th>Balance</th><th>Date</th></tr></thead><tbody id="feesRows"></tbody></table></div>
+</div>
+
+<div id="attendanceTab" class="tabcontent hidden">
+<h3>Mark Attendance</h3>
+<form id="attendanceForm"><div class="grid">
+<div class="field"><label>Student *</label><select id="attendanceStudent" required><option value="">Select Student</option></select></div>
+<div class="field"><label>Date *</label><input id="attendanceDate" type="date" required></div>
+<div class="field"><label>Status *</label><select id="attendanceStatus" required><option value="Present">Present</option><option value="Absent">Absent</option><option value="Late">Late</option><option value="Leave">Leave</option></select></div>
+<div class="field"><label>Remarks</label><input id="attendanceRemarks" placeholder="Optional"></div>
+</div><button type="submit">Save Attendance</button></form>
+<h3 style="margin-top:25px">Attendance Records</h3>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Student</th><th>Date</th><th>Status</th><th>Remarks</th></tr></thead><tbody id="attendanceRows"></tbody></table></div>
+</div>
+</div>
+</section>
+</main>
+<footer>The Needa Skill Development & Vocational Training Center — Dera Murad Jamali</footer>
+
+<script>
+const SUPABASE_URL = "https://handeavczgphxgwynunv.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_6GBd0_dyNviE9Y61p9jSbQ_B0WscRJo";
+const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentStudents = [];
+
+function showPublic(){hideAll();document.getElementById('publicPage').classList.remove('hidden')}
+function showLogin(){hideAll();document.getElementById('loginPage').classList.remove('hidden')}
+function hideAll(){['publicPage','loginPage','dashboard'].forEach(id=>document.getElementById(id).classList.add('hidden'))}
+function message(id,text,isError=false){const el=document.getElementById(id);el.textContent=text;el.classList.remove('hidden','error');if(isError)el.classList.add('error')}
+function clearMessage(id){const el=document.getElementById(id);el.textContent='';el.classList.add('hidden');el.classList.remove('error')}
+function openTab(name,button){
+ document.querySelectorAll('.tabcontent').forEach(x=>x.classList.add('hidden'));
+ document.getElementById(name+'Tab').classList.remove('hidden');
+ document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+ if(button)button.classList.add('active');
+ if(name==='students')loadStudents();
+ if(name==='teachers')loadTeachers();
+ if(name==='fees')loadFees();
+ if(name==='attendance')loadAttendance();
+}
+async function checkAdmin(user){
+ const {data,error}=await client.from('Profile').select('Full_name,role').eq('id',user.id).single();
+ if(error)throw new Error('Profile چیک نہیں ہو سکا: '+error.message);
+ if(!data || String(data.role).toLowerCase()!=='admin')throw new Error('اس اکاؤنٹ کو Admin کی اجازت نہیں ہے۔');
+ return data;
+}
+document.getElementById('loginForm').addEventListener('submit',async e=>{
+ e.preventDefault();clearMessage('loginMessage');
+ const btn=document.getElementById('loginBtn');btn.disabled=true;btn.textContent='Checking...';
+ try{
+  const {data,error}=await client.auth.signInWithPassword({email:document.getElementById('email').value.trim(),password:document.getElementById('password').value});
+  if(error)throw error;
+  const profile=await checkAdmin(data.user);
+  await showDashboard(profile);
+ }catch(err){message('loginMessage',err.message||'Login failed',true);await client.auth.signOut()}
+ finally{btn.disabled=false;btn.textContent='Login'}
+});
+async function showDashboard(profile){
+ hideAll();document.getElementById('dashboard').classList.remove('hidden');
+ document.getElementById('welcome').textContent='Welcome, '+(profile.Full_name||'Admin');
+ await loadStudents();await loadTeachers();await loadFees();await loadAttendance();
+}
+async function logout(){await client.auth.signOut();showLogin()}
+async function requireSession(){
+ const {data}=await client.auth.getSession();
+ if(data.session){try{const p=await checkAdmin(data.session.user);await showDashboard(p)}catch(e){await client.auth.signOut();showPublic()}}
+ else showPublic();
+}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fillStudentSelects(){
+ const opts='<option value="">Select Student</option>'+currentStudents.map(s=>`<option value="${s.id}">${esc(s.student_name)} (ID ${s.id})</option>`).join('');
+ document.getElementById('feeStudent').innerHTML=opts;
+ document.getElementById('attendanceStudent').innerHTML=opts;
+}
+async function loadStudents(){
+ const {data,error}=await client.from('Name').select('id,student_name,father_name,mobile_number,course').order('id',{ascending:false});
+ if(error){message('globalMessage','Students load error: '+error.message,true);return}
+ currentStudents=data||[];document.getElementById('studentCount').textContent=currentStudents.length;fillStudentSelects();
+ document.getElementById('studentsRows').innerHTML=currentStudents.map(s=>`<tr><td>${esc(s.id)}</td><td>${esc(s.student_name)}</td><td>${esc(s.father_name)}</td><td>${esc(s.mobile_number)}</td><td>${esc(s.course)}</td></tr>`).join('')||'<tr><td colspan="5">No student records yet.</td></tr>';
+}
+document.getElementById('studentForm').addEventListener('submit',async e=>{
+ e.preventDefault();const row={student_name:document.getElementById('studentName').value.trim(),father_name:document.getElementById('fatherName').value.trim(),mobile_number:document.getElementById('studentMobile').value.trim(),course:document.getElementById('studentCourse').value.trim()};
+ const {error}=await client.from('Name').insert([row]);if(error){message('globalMessage','Student save error: '+error.message,true);return}
+ e.target.reset();message('globalMessage','Student successfully saved.');await loadStudents();
+});
+async function loadTeachers(){
+ const {data,error}=await client.from('Teachers').select('id,teacher_name,father_name,mobile_number,subject,salary').order('id',{ascending:false});
+ if(error){message('globalMessage','Teachers load error: '+error.message,true);return}
+ const rows=data||[];document.getElementById('teacherCount').textContent=rows.length;
+ document.getElementById('teachersRows').innerHTML=rows.map(t=>`<tr><td>${esc(t.id)}</td><td>${esc(t.teacher_name)}</td><td>${esc(t.father_name)}</td><td>${esc(t.mobile_number)}</td><td>${esc(t.subject)}</td><td>${esc(t.salary)}</td></tr>`).join('')||'<tr><td colspan="6">No teacher records yet.</td></tr>';
+}
+document.getElementById('teacherForm').addEventListener('submit',async e=>{
+ e.preventDefault();const row={teacher_name:document.getElementById('teacherName').value.trim(),father_name:document.getElementById('teacherFather').value.trim(),mobile_number:document.getElementById('teacherMobile').value.trim(),subject:document.getElementById('teacherSubject').value.trim(),salary:document.getElementById('teacherSalary').value?Number(document.getElementById('teacherSalary').value):null};
+ const {error}=await client.from('Teachers').insert([row]);if(error){message('globalMessage','Teacher save error: '+error.message,true);return}
+ e.target.reset();message('globalMessage','Teacher successfully saved.');await loadTeachers();
+});
+async function loadFees(){
+ const {data,error}=await client.from('Fees').select('id,student_id,fee_month,total_fee,paid_amount,payment_date').order('id',{ascending:false});
+ if(error){message('globalMessage','Fees load error: '+error.message,true);return}
+ const rows=data||[];document.getElementById('feeCount').textContent=rows.length;
+ const names=Object.fromEntries(currentStudents.map(s=>[s.id,s.student_name]));
+ document.getElementById('feesRows').innerHTML=rows.map(f=>`<tr><td>${esc(f.id)}</td><td>${esc(names[f.student_id]||('Student ID '+f.student_id))}</td><td>${esc(f.fee_month)}</td><td>${esc(f.total_fee)}</td><td>${esc(f.paid_amount)}</td><td>${(Number(f.total_fee)||0)-(Number(f.paid_amount)||0)}</td><td>${esc(f.payment_date)}</td></tr>`).join('')||'<tr><td colspan="7">No fee records yet.</td></tr>';
+}
+document.getElementById('feeForm').addEventListener('submit',async e=>{
+ e.preventDefault();const row={student_id:Number(document.getElementById('feeStudent').value),fee_month:document.getElementById('feeMonth').value.trim(),total_fee:Number(document.getElementById('totalFee').value),paid_amount:Number(document.getElementById('paidAmount').value),payment_date:document.getElementById('paymentDate').value||new Date().toISOString().slice(0,10),notes:document.getElementById('feeNotes').value.trim()};
+ const {error}=await client.from('Fees').insert([row]);if(error){message('globalMessage','Fee save error: '+error.message,true);return}
+ e.target.reset();document.getElementById('paidAmount').value='0';message('globalMessage','Fee record successfully saved.');await loadFees();
+});
+async function loadAttendance(){
+ const {data,error}=await client.from('Attendance').select('id,student_id,attendance_date,status,remarks').order('id',{ascending:false});
+ if(error){message('globalMessage','Attendance load error: '+error.message,true);return}
+ const rows=data||[];document.getElementById('attendanceCount').textContent=rows.length;
+ const names=Object.fromEntries(currentStudents.map(s=>[s.id,s.student_name]));
+ document.getElementById('attendanceRows').innerHTML=rows.map(a=>`<tr><td>${esc(a.id)}</td><td>${esc(names[a.student_id]||('Student ID '+a.student_id))}</td><td>${esc(a.attendance_date)}</td><td>${esc(a.status)}</td><td>${esc(a.remarks)}</td></tr>`).join('')||'<tr><td colspan="5">No attendance records yet.</td></tr>';
+}
+document.getElementById('attendanceForm').addEventListener('submit',async e=>{
+ e.preventDefault();const row={student_id:Number(document.getElementById('attendanceStudent').value),attendance_date:document.getElementById('attendanceDate').value,status:document.getElementById('attendanceStatus').value,remarks:document.getElementById('attendanceRemarks').value.trim()};
+ const {error}=await client.from('Attendance').insert([row]);if(error){message('globalMessage','Attendance save error: '+error.message,true);return}
+ e.target.reset();document.getElementById('attendanceDate').value=new Date().toISOString().slice(0,10);message('globalMessage','Attendance successfully saved.');await loadAttendance();
+});
+document.getElementById('paymentDate').value=new Date().toISOString().slice(0,10);
+document.getElementById('attendanceDate').value=new Date().toISOString().slice(0,10);
+requireSession();
+</script>
+
+<script>
+/* Reliable dashboard tab navigation */
+(function () {
+  function activateDashboardTab(name, button) {
+    var valid = ["students", "teachers", "fees", "attendance"];
+    if (valid.indexOf(name) === -1) return;
+    document.querySelectorAll(".tabcontent").forEach(function (panel) {
+      panel.classList.add("hidden");
+    });
+    var target = document.getElementById(name + "Tab");
+    if (target) target.classList.remove("hidden");
+    document.querySelectorAll(".tabs button[data-tab]").forEach(function (tabButton) {
+      tabButton.classList.toggle("active", tabButton === button);
+    });
+    var loaders = {
+      students: window.loadStudents,
+      teachers: window.loadTeachers,
+      fees: window.loadFees,
+      attendance: window.loadAttendance
+    };
+    if (typeof loaders[name] === "function") {
+      Promise.resolve(loaders[name]()).catch(function (err) {
+        var box = document.getElementById("globalMessage");
+        if (box) {
+          box.textContent = "Data load error: " + (err && err.message ? err.message : err);
+          box.classList.remove("hidden");
+          box.classList.add("error");
+        }
+      });
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest(".tabs button[data-tab]");
+    if (!button) return;
+    event.preventDefault();
+    event.stopPropagation();
+    activateDashboardTab(button.getAttribute("data-tab"), button);
+  }, true);
+})();
+</script>
+
+</body>
+</html>
