@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Needa Skill Development & Vocational Training Center</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&display=swap');
+:root{--navy:#12304a;--teal:#087f8c;--ink:#1e293b;--muted:#64748b;--bg:#f3f6f9;--line:#dce4ea}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:var(--ink);font-family:Arial,'Jameel Noori Nastaleeq','Noto Nastaliq Urdu',Tahoma,sans-serif}
+header{background:var(--navy);color:#fff;padding:22px 16px;text-align:center}header h1{font-size:clamp(20px,4vw,30px);margin:0 0 5px}header p{margin:0;color:#d9e8f0}
+nav{background:var(--teal);display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px}nav a{color:#fff;text-decoration:none;padding:9px 13px;border-radius:7px;font-weight:700}nav a:hover{background:#ffffff26}
+.wrap{max-width:1050px;margin:auto;padding:0 16px}.hero{background:linear-gradient(120deg,#e8f4f6,#f4f8fb);padding:65px 0;text-align:center}.hero h2{font-size:clamp(27px,5vw,42px);color:var(--navy);margin:0 0 12px}.hero p{font-size:18px;color:#425466;max-width:700px;margin:0 auto 22px;line-height:1.8}
+.btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;border:0;border-radius:8px;padding:12px 19px;font-weight:700;cursor:pointer;font-size:15px}.btn.secondary{background:#64748b}.btn.danger{background:#a83232}
+section.content{padding:42px 0}section.content h2{text-align:center;color:var(--navy);font-size:27px;margin:0 0 24px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}.course{border:1px solid var(--line);border-radius:12px;padding:20px;background:#fff;box-shadow:0 5px 18px #12304a0a}.course h3{color:var(--teal);margin:0 0 9px}.course p{color:var(--muted);line-height:1.6;margin:0}
+.admission,.contact{background:#f3f7fa;text-align:center}.admission p,.contact p{line-height:1.8;color:#526273}
+footer{background:var(--navy);color:#fff;text-align:center;padding:18px}
+.admin-area{background:var(--bg);padding:28px 0;min-height:300px}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;margin:18px 0;box-shadow:0 5px 18px #12304a0a}.admin-area h2{font-size:21px;margin:0 0 16px;color:var(--navy)}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}input{width:100%;padding:12px;border:1px solid #cbd5df;border-radius:8px;font-size:16px;outline:none}input:focus{border-color:var(--teal);box-shadow:0 0 0 3px #087f8c18}
+button:disabled{opacity:.6;cursor:not-allowed}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.hidden{display:none!important}.msg{margin-top:12px;padding:10px;border-radius:8px;font-size:14px;white-space:pre-wrap}.error{background:#fff0f0;color:#a32323}.success{background:#eaf8f0;color:#17613e}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.small{color:var(--muted);font-size:13px}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:560px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);font-size:14px}th{background:#f4f7f9;color:var(--navy)}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.panel{padding:17px}.hero{padding:45px 0}}
+</style>
+</head>
+<body>
+<header id="home"><h1>The Needa Skill Development & Vocational Training Center</h1><p>Dera Murad Jamali, Balochistan</p></header>
+<nav><a href="#home">Home</a><a href="#courses">Courses</a><a href="#admission">Admission</a><a href="#contact">Contact</a><a href="#admin">Admin Login</a></nav>
+<div class="hero"><div class="wrap"><h2>Welcome to The Needa Skill Development Center</h2><p>Learn practical computer and digital skills to build your future. Join our professional training courses in Dera Murad Jamali.</p><a class="btn" href="#admission">Explore Admission</a></div></div>
+<section class="content" id="courses"><div class="wrap"><h2>Our Courses</h2><div class="cards">
+<div class="course"><h3>DIT / CIT</h3><p>Computer fundamentals, office applications and practical IT skills.</p></div>
+<div class="course"><h3>Graphic Designing</h3><p>Learn creative design, layouts and professional graphics.</p></div>
+<div class="course"><h3>Video Editing</h3><p>Create and edit videos for social media and business.</p></div>
+<div class="course"><h3>MS Office & Excel</h3><p>Learn Word, Excel, PowerPoint and office work.</p></div>
+<div class="course"><h3>Social Media Marketing</h3><p>Understand social media pages, content and digital promotion.</p></div>
+</div></div></section>
+<section class="content admission" id="admission"><div class="wrap"><h2>Online Admission</h2><p>For admission details and course information, contact the training center. Registered staff can manage student admissions through the Admin Login below.</p><a class="btn" href="#admin">Admin Login</a></div></section>
+<section class="content contact" id="contact"><div class="wrap"><h2>Contact Us</h2><p>The Needa Skill Development & Vocational Training Center<br>Dera Murad Jamali, Balochistan</p></div></section>
+<section class="admin-area" id="admin"><div class="wrap">
+<section id="loginPanel" class="panel"><h2>Admin Login</h2><label for="email">Email Address</label><input id="email" type="email" autocomplete="username" placeholder="Enter admin email"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Enter password"><button class="btn" id="loginBtn" onclick="login()">Login</button><div id="loginMsg" aria-live="polite"></div></section>
+<section id="dashboard" class="hidden">
+<div class="panel topline"><div><h2 style="margin-bottom:4px">Admin Dashboard</h2><div id="welcome" class="small"></div></div><button class="btn danger" onclick="logout()">Logout</button></div>
+<div class="panel"><h2>Student Admission</h2><form id="studentForm"><div class="grid">
+<div><label for="studentName">Student Name</label><input id="studentName" required maxlength="120" placeholder="Student full name"></div>
+<div><label for="fatherName">Father Name</label><input id="fatherName" required maxlength="120" placeholder="Father full name"></div>
+<div><label for="mobileNumber">Mobile Number</label><input id="mobileNumber" required maxlength="20" inputmode="tel" placeholder="03XXXXXXXXX"></div>
+<div><label for="courseName">Course Name</label><input id="courseName" required maxlength="120" placeholder="e.g. DIT, CIT, Graphic Design"></div>
+</div><button class="btn" id="saveBtn" type="submit">Save Student</button><div id="formMsg" aria-live="polite"></div></form></div>
+<div class="panel"><div class="topline"><div><h2 style="margin-bottom:4px">Student Records</h2><div class="small">Latest admissions appear first.</div></div><button class="btn secondary" onclick="loadStudents()">Refresh List</button></div>
+<div class="tablewrap" style="margin-top:14px"><table><thead><tr><th>Student ID</th><th>Student Name</th><th>Father Name</th><th>Mobile Number</th><th>Course</th></tr></thead><tbody id="studentRows"><tr><td colspan="5">Login to view records.</td></tr></tbody></table></div><div id="listMsg" class="small" aria-live="polite"></div></div>
+</section></div></section>
+<footer>© 2026 The Needa Skill Development & Vocational Training Center. All rights reserved.</footer>
+<script>
+const SUPABASE_URL='https://handeavczgphxgwynunv.supabase.co';
+const SUPABASE_KEY='sb_publishable_6GBd0_dyNviE9Y61p9jSbQ_B0WscRJo';
+const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+function showMessage(id,message,type='error'){const el=document.getElementById(id);el.className='msg '+type;el.textContent=message;}
+function clearMessage(id){const el=document.getElementById(id);el.className='';el.textContent='';}
+async function login(){const email=document.getElementById('email').value.trim(),password=document.getElementById('password').value;if(!email||!password){showMessage('loginMsg','Please enter email and password.');return;}const btn=document.getElementById('loginBtn');btn.disabled=true;btn.textContent='Checking...';clearMessage('loginMsg');try{const {data,error}=await client.auth.signInWithPassword({email,password});if(error)throw error;await showDashboard(data.user);}catch(e){showMessage('loginMsg',e.message||'Login failed.');}finally{btn.disabled=false;btn.textContent='Login';}}
+async function showDashboard(user){const {data:profile,error}=await client.from('Profile').select('id, Full_name, role').eq('id',user.id).single();if(error)throw new Error('Profile check failed: '+error.message);if(!profile||String(profile.role).toLowerCase()!=='admin'){await client.auth.signOut();throw new Error('This account does not have Admin access.');}document.getElementById('loginPanel').classList.add('hidden');document.getElementById('dashboard').classList.remove('hidden');document.getElementById('welcome').textContent='Welcome, '+(profile.Full_name||'Admin');await loadStudents();}
+async function logout(){await client.auth.signOut();document.getElementById('dashboard').classList.add('hidden');document.getElementById('loginPanel').classList.remove('hidden');document.getElementById('password').value='';}
+document.getElementById('studentForm').addEventListener('submit',async function(event){event.preventDefault();const student_name=document.getElementById('studentName').value.trim(),father_name=document.getElementById('fatherName').value.trim(),mobile_number=document.getElementById('mobileNumber').value.trim(),course=document.getElementById('courseName').value.trim();const btn=document.getElementById('saveBtn');btn.disabled=true;btn.textContent='Saving...';clearMessage('formMsg');try{const {error}=await client.from('Name').insert([{student_name,father_name,mobile_number,course}]);if(error)throw error;showMessage('formMsg','Student saved successfully.','success');this.reset();await loadStudents();}catch(e){showMessage('formMsg','Could not save student: '+(e.message||'Unknown error'));}finally{btn.disabled=false;btn.textContent='Save Student';}});
+async function loadStudents(){const body=document.getElementById('studentRows');body.innerHTML='<tr><td colspan="5">Loading records...</td></tr>';try{const {data,error}=await client.from('Name').select('id, student_name, father_name, mobile_number, course').order('id',{ascending:false});if(error)throw error;if(!data||data.length===0){body.innerHTML='<tr><td colspan="5">No student records found.</td></tr>';document.getElementById('listMsg').textContent='Total students: 0';return;}body.innerHTML='';data.forEach(s=>{const tr=document.createElement('tr');[s.id,s.student_name,s.father_name,s.mobile_number,s.course].forEach(value=>{const td=document.createElement('td');td.textContent=value??'';tr.appendChild(td);});body.appendChild(tr);});document.getElementById('listMsg').textContent='Total students: '+data.length;}catch(e){body.innerHTML='<tr><td colspan="5">Unable to load records.</td></tr>';document.getElementById('listMsg').textContent=e.message||'Please check table columns and permissions.';}}
+client.auth.getSession().then(async({data})=>{if(data.session){try{await showDashboard(data.session.user);}catch(e){showMessage('loginMsg',e.message||'Session check failed.');}}});
+</script>
+</body></html>
